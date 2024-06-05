@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController passwordController = TextEditingController();
   final Authentication authentication = Authentication();
-  login() async {
+  login({required BuildContext ctx}) async {
     if (passwordController.text.trim().isNotEmpty &&
         emailController.text.trim().isNotEmpty) {
       try {
@@ -29,9 +29,10 @@ class _LoginPageState extends State<LoginPage> {
         });
         final response = await authentication.loginUser(
             passwordController.text.trim(), emailController.text.trim());
+        // print(response);
         if (response) {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomePage()));
+          Navigator.push(
+              ctx, MaterialPageRoute(builder: (ctx) => const HomePage()));
         }
         setState(() {
           isLoading = false;
@@ -94,14 +95,14 @@ class _LoginPageState extends State<LoginPage> {
                       icon: const Icon(Icons.lock),
                       controller: passwordController,
                       hintText: 'Password',
+                      isPass: true,
                     ),
                     const SizedBox(height: 40),
                     CustomElevatedButton(
-                      onPressed: () {
-                        login();
-                        // Add login logic here
-                      },
-                      label: 'Login',
+                      onPressed: () => login(ctx: context),
+                      // Add login logic here
+
+                      label: isLoading ? "Loading....." : 'Login',
                       width: double.infinity,
                       height: 50,
                       backgroundColor: Theme.of(context).colorScheme.primary,

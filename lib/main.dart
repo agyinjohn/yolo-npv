@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:yolo/firebase_options.dart';
-import 'package:yolo/screens/landing_page.dart';
+// import 'package:yolo/screens/landing_page.dart';
+import 'package:yolo/screens/splash.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal)
             .copyWith(secondary: Colors.tealAccent),
       ),
-      home: const LandingPage(),
+      home: const SplashScreen(),
     );
   }
 }

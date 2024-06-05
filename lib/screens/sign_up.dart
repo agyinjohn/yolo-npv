@@ -20,8 +20,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   final TextEditingController emailController = TextEditingController();
 
-  final TextEditingController badgeNumberController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmpasswordController =
       TextEditingController();
@@ -34,7 +32,6 @@ class _SignUpPageState extends State<SignUpPage> {
     }
 
     if (emailController.text.trim().isNotEmpty &&
-        badgeNumberController.text.trim().isNotEmpty &&
         passwordController.text.trim().isNotEmpty &&
         confirmpasswordController.text.trim().isNotEmpty) {
       try {
@@ -84,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
     emailController.dispose();
     passwordController.dispose();
     confirmpasswordController.dispose();
-    badgeNumberController.dispose();
+
     nameController.dispose();
     super.dispose();
   }
@@ -150,12 +147,14 @@ class _SignUpPageState extends State<SignUpPage> {
                     CustomTextField(
                       icon: const Icon(Icons.lock),
                       controller: passwordController,
+                      isPass: true,
                       hintText: 'Password',
                     ),
                     const SizedBox(height: 20),
                     CustomTextField(
                       icon: const Icon(Icons.lock),
                       controller: confirmpasswordController,
+                      isPass: true,
                       hintText: 'Confirm Password',
                     ),
                     const SizedBox(height: 40),

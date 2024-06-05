@@ -61,7 +61,7 @@ class Authentication {
     try {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      debugPrint(credential.user as String?);
+      // debugPrint(credential.user as String?);
       if (credential.user != null) {
         result = true;
       }
@@ -70,7 +70,7 @@ class Authentication {
     } catch (err) {
       result = false;
 
-      debugPrint(err.toString());
+      debugPrint(" err.toString() ${err.toString()}");
     }
 
     return result;
